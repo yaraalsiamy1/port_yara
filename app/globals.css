@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Custom palette tuned for Yara's portfolio */
+    --background: 120 20% 99%; /* #FCFCFB */
+    --foreground: 220 25% 12%; /* #111827 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 220 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+    --primary: 220 25% 12%; /* #111827 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%; /* soft neutral */
+    --secondary-foreground: 220 25% 12%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%; /* #6B7280 */
+    --accent: 220 34% 68%; /* #7B9ACC */
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 221 35% 57%; /* #6888BA */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%; /* #E5E7EB */
+    --input: 220 13% 91%;
+    --ring: 220 34% 68%;
+    --success: 137 22% 57%; /* #7BAA8B */
+    --radius: 0.75rem;
+
+    --chart-1: 220 34% 68%;
+    --chart-2: 137 22% 57%;
+    --chart-3: 220 9% 46%;
+    --chart-4: 221 35% 57%;
+    --chart-5: 120 20% 99%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(123, 154, 204, 0.08),
+      transparent
+    );
+    background-attachment: fixed;
+  }
+  ::selection {
+    background-color: hsl(var(--accent) / 0.22);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .container-portfolio {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+  .section-pad {
+    @apply py-24 md:py-32;
+  }
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.18em] text-accent;
+  }
+  .heading-xl {
+    @apply text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl;
+  }
+  .heading-lg {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+  }
+  .heading-md {
+    @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+  }
+  .text-body {
+    @apply text-base leading-[1.75] text-muted-foreground;
+  }
+  .card-soft {
+    @apply rounded-2xl border border-border bg-card;
+    box-shadow:
+      0 1px 2px rgba(17, 24, 39, 0.04),
+      0 8px 24px -12px rgba(17, 24, 39, 0.08);
+  }
+  .card-soft-hover {
+    @apply transition-all duration-300 ease-out hover:-translate-y-0.5;
+    box-shadow:
+      0 1px 2px rgba(17, 24, 39, 0.04),
+      0 18px 40px -18px rgba(17, 24, 39, 0.16);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .bg-grid-soft {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, black, transparent);
+  }
+}
